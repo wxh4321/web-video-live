@@ -22,9 +22,12 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-注释：本git与[LiveCameraServer（视频存储后台）](https://github.com/wxh4321/LiveCameraServer)和[web-video-live-Server（监控后台）](https://github.com/wxh4321/web-video-live-Server)配合使用,并可以使用openssl生成证书搭建局域网监控设备
 
-##特别鸣谢以下文章作者和相关技术大佬
-#1、[web-video-live](https://github.com/fuyi501/web-video-live)
-#2、[HTML5中的websocket实现直播](https://blog.csdn.net/qq_39364032/article/details/79744309)
+注释：本git与[LiveCameraServer（视频存储后台）](https://github.com/wxh4321/LiveCameraServer)和[web-video-live-Server（监控后台）](https://github.com/wxh4321/web-video-live-Server)配合使用,并可以使用openssl生成证书搭建局域网监控设备。
+
+#node版本 v10.11.0
+
+## 特别鸣谢以下文章作者和相关技术大佬
+# 1、[web-video-live](https://github.com/fuyi501/web-video-live)
+# 2、[HTML5中的websocket实现直播](https://blog.csdn.net/qq_39364032/article/details/79744309)
 
