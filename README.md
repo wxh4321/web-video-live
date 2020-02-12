@@ -1,4 +1,4 @@
-# vue、python Flask、websocket实现家用视频监控
+# Vue、python Flask、websocket实现家用视频监控
 兼容性目前仅支持chrome浏览器
 已知未解决bug：手机端打开chrome存在噪音，仔细google下应该能解决，懒得弄了，华为荣耀8手机可以直接静音，不影响视频录制
 # web-video-live
