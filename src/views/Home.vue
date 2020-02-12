@@ -62,14 +62,15 @@ import HlsLive from "@/components/HlsLive.vue";
 import Flv from "@/components/flv.vue";
 import HttpFlv from "@/components/httpFlv.vue";
 
+
 export default {
   name: "home",
   components: {
     GithubButton,
-    RtmpLive,
-    HlsLive,
+    // RtmpLive,
+    // HlsLive,
     Flv,
-    HttpFlv
+    // HttpFlv,
   },
   data () {
     return {
@@ -106,8 +107,8 @@ export default {
 
 <style lang="less" scoped>
 a {
-  // color: #42b983;
-  color: #fff;
+  color: #42b983;
+  // color: #fff;
 }
 a:hover {
   color: #fff;
