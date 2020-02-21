@@ -60,6 +60,21 @@ function sendSocketData(socket, back, backcontext, video) {
   };
   var ratio = getPixelRatio(backcontext);
 
+  let { width, height } = window.getComputedStyle(back, null);
+  width = width.replace('px', '');
+  height = height.replace('px', '');
+  // 根据设备像素比优化canvas绘图
+  const devicePixelRatio = window.devicePixelRatio;
+  if (devicePixelRatio) {
+    back.style.width = `${width}px`;
+    back.style.height = `${height}px`;
+    back.height = height * devicePixelRatio;
+    back.width = width * devicePixelRatio;
+    backcontext.scale(devicePixelRatio, devicePixelRatio);
+  } else {
+    back.width = width;
+    back.height = height;
+  }
   //打开socket
   socket.onopen = function() {
     draw();
