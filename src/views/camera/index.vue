@@ -10,6 +10,7 @@
 <script>
 import { getWebLive } from "@/services/api";
 import { blob2base64 } from "@/utils/Tools";
+import func from 'vue-editor-bridge';
 let socket = null,
   aVideo = null,
   aCanvas = null,
@@ -59,7 +60,7 @@ function sendSocketData(socket, back, backcontext, video) {
     return (window.devicePixelRatio || 1) / backingStore;
   };
   var ratio = getPixelRatio(backcontext);
-
+  let drawTimer = null;
   let { width, height } = window.getComputedStyle(back, null);
   width = width.replace('px', '');
   height = height.replace('px', '');
@@ -80,7 +81,12 @@ function sendSocketData(socket, back, backcontext, video) {
     draw();
     console.log("open success");
   };
-
+  socket.onclose = function(e){
+    console.log('event');
+    if(drawTimer){
+      clearTimeout(drawTimer);
+    }
+  }
   // 将视频帧绘制到Canvas对象上,Canvas每100ms切换帧，形成肉眼视频效果
   var draw = function() {
     try {
@@ -89,7 +95,8 @@ function sendSocketData(socket, back, backcontext, video) {
       backcontext.drawImage(video, 0, 0, back.width * ratio, back.height * ratio);
     } catch (e) {
       if (e.name == "NS_ERROR_NOT_AVAILABLE") {
-        return setTimeout(draw, 100);
+        drawTimer = setTimeout(draw, 100);
+        return drawTimer;
       } else {
         throw e;
       }
@@ -99,7 +106,7 @@ function sendSocketData(socket, back, backcontext, video) {
       // Canvas的内容转化成PNG data URI并发送到服务器，0.5为和压缩系数
       socket.send(back.toDataURL("image/jpeg", 0.5));
     }
-    setTimeout(draw, 100);
+    drawTimer = setTimeout(draw, 100);
   };
 }
 
